@@ -1,4 +1,7 @@
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
 public class Ember {
 
@@ -38,8 +41,7 @@ public class Ember {
     }
 
     public int SzuletesiDatumEv(){
-        int evSzam=Integer.parseInt(szulDatum.substring(0,4));
-        return evSzam;
+        return Integer.parseInt(szulDatum.substring(0,4));
     }
 
     public int SzuletesiDatumHonap(){
@@ -66,9 +68,11 @@ public class Ember {
         return napSzam;
     }
     public int HanyEvesVagy(){
-        LocalDateTime maiDatum = LocalDateTime.now();
-
-        return maiDatum.getYear()-SzuletesiDatumEv();
+        LocalDate maiDatum = LocalDate.now();
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-M-d");
+        LocalDate szuletesiDatum = LocalDate.parse(szulDatum,format);
+        Period kulonbseg = Period.between(maiDatum, szuletesiDatum);
+        return kulonbseg.getYears();
     }
     @Override
     public String toString() {

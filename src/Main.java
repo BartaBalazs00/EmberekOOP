@@ -39,10 +39,11 @@ public class Main {
         System.out.println("A legfiatalabb Ember neve:  "+emberek.LegfiatalabbEmberNeve());
         System.out.println("A legidősebb ember sorszáma: "+emberek.LegidosebbEmberSorszama());
 
-        /*
+
         Emberek emberek2 = new Emberek("emberek.txt");
         System.out.println(emberek2.toString());
-         */
+
+
     }
 
 }

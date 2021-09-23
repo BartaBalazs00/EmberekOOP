@@ -2,20 +2,26 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Emberek {
 
-    private List<Ember> emberekLista = new ArrayList<>();
+    private List<Ember> emberekLista;
 
     public Emberek(Ember[] tomb){
+        this.emberekLista = new ArrayList<>();
+        this.emberekLista.addAll(Arrays.asList(tomb));
+        /*
         for (Ember ember:
              tomb) {
             emberekLista.add(ember);
         }
+        */
     }
 
     public Emberek(String fajlNev){
+        this.emberekLista = new ArrayList<>();
         try {
             FileReader fr=new FileReader(fajlNev);
             BufferedReader br = new BufferedReader(fr);
@@ -87,7 +93,7 @@ public class Emberek {
     public String toString() {
         String szoveg="";
         for (Ember ember:
-             emberekLista) {
+             this.emberekLista) {
             szoveg += ember+"\n";
         }
         return szoveg;
